@@ -42,9 +42,9 @@ const featureCards = [
 ];
 
 const portalCards = [
-  { title: "Lab Admin Login", text: "Control bookings, reports, users, and operational policy from a single command plane.", href: "/login" },
-  { title: "Collection Centre Login", text: "Separate portal for centre workflows, pickup coordination, and execution tracking.", href: "/collection-centre" },
-  { title: "Logistics Login", text: "Field and logistics teams get purpose-built access for route, visit, and status operations.", href: "/phlebo" },
+  { title: "Lab Admin Demo", text: "Demo workspace for booking, reporting, users, and operational policies.", href: "/demo/lab-admin" },
+  { title: "Collection Centre Demo", text: "Demo panel for pickup coordination and execution tracking.", href: "/demo/collection-centre" },
+  { title: "Logistics Demo", text: "Demo panel for route, visit, and status operations.", href: "/demo/logistics" },
 ];
 
 const stackItems = [
@@ -79,7 +79,6 @@ export default function HomePage() {
             </Box>
           </HStack>
           <HStack spacing={3}>
-            <Button as={Link} href="/login" variant="outline" color="white" borderColor="whiteAlpha.700" _hover={{ bg: "whiteAlpha.200", color: "white" }} rightIcon={<ArrowForwardIcon />}>Login</Button>
             <Button as={Link} href="#contact" bg="teal.300" color="black" _hover={{ bg: "teal.200" }}>Contact Us</Button>
           </HStack>
         </Flex>
@@ -101,7 +100,7 @@ export default function HomePage() {
             <Text fontSize={{ base: "md", md: "lg" }} color="whiteAlpha.800" maxW="2xl" mb={8}>Labit unifies booking, field execution, machine-linked reporting, and communication into one high-visibility operating system.</Text>
             <HStack spacing={4} flexWrap="wrap">
               <Button as={Link} href="https://labit.online" isExternal size="lg" bg="cyan.300" color="black" _hover={{ bg: "cyan.200" }}>Open Main Portal</Button>
-              <Button as={Link} href="/cto" size="lg" variant="ghost" color="white" border="1px solid" borderColor="whiteAlpha.400" _hover={{ bg: "whiteAlpha.100", color: "white" }}>View CTO Console</Button>
+              <Button as={Link} href="#portals" size="lg" variant="ghost" color="white" border="1px solid" borderColor="whiteAlpha.400" _hover={{ bg: "whiteAlpha.100", color: "white" }}>View Portal Demos</Button>
             </HStack>
           </GridItem>
           <GridItem>
@@ -117,79 +116,24 @@ export default function HomePage() {
           </GridItem>
         </Grid>
 
-        <Box id="features" mt={{ base: 14, md: 20 }} scrollMarginTop="110px">
-          <Heading fontSize={{ base: "2xl", md: "3xl" }} mb={6}>Platform capabilities</Heading>
-          <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={4}>
-            {featureCards.map((item) => (
-              <Box key={item.title} p={5} borderRadius="xl" border="1px solid" borderColor="whiteAlpha.200" bg="whiteAlpha.100" backdropFilter="blur(6px)" transition="all 0.25s ease" _hover={{ transform: "translateY(-3px)", borderColor: "cyan.300", bg: "whiteAlpha.200" }}>
-                <Icon as={item.icon} boxSize={5} color="cyan.200" mb={3} />
-                <Heading size="sm" mb={2}>{item.title}</Heading>
-                <Text fontSize="sm" color="whiteAlpha.800">{item.description}</Text>
-              </Box>
-            ))}
-          </SimpleGrid>
-        </Box>
+        <Box id="features" mt={{ base: 14, md: 20 }} scrollMarginTop="110px"><Heading fontSize={{ base: "2xl", md: "3xl" }} mb={6}>Platform capabilities</Heading><SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={4}>{featureCards.map((item) => (<Box key={item.title} p={5} borderRadius="xl" border="1px solid" borderColor="whiteAlpha.200" bg="whiteAlpha.100" backdropFilter="blur(6px)" transition="all 0.25s ease" _hover={{ transform: "translateY(-3px)", borderColor: "cyan.300", bg: "whiteAlpha.200" }}><Icon as={item.icon} boxSize={5} color="cyan.200" mb={3} /><Heading size="sm" mb={2}>{item.title}</Heading><Text fontSize="sm" color="whiteAlpha.800">{item.description}</Text></Box>))}</SimpleGrid></Box>
 
         <Grid id="portals" templateColumns={{ base: "1fr", lg: "1fr 1fr" }} gap={6} mt={{ base: 12, md: 16 }} scrollMarginTop="110px">
           <Box p={{ base: 5, md: 6 }} borderRadius="2xl" border="1px solid" borderColor="whiteAlpha.200" bg="rgba(3, 10, 24, 0.7)">
             <Heading size="md" mb={4}>Product Stack</Heading>
-            <VStack align="stretch" spacing={3}>
-              {stackItems.map((line) => (
-                <HStack key={line} align="flex-start" spacing={3}><StarIcon mt="5px" color="teal.200" boxSize={3} /><Text color="whiteAlpha.800">{line}</Text></HStack>
-              ))}
-            </VStack>
+            <VStack align="stretch" spacing={3}>{stackItems.map((line) => (<HStack key={line} align="flex-start" spacing={3}><StarIcon mt="5px" color="teal.200" boxSize={3} /><Text color="whiteAlpha.800">{line}</Text></HStack>))}</VStack>
           </Box>
           <Box p={{ base: 5, md: 6 }} borderRadius="2xl" border="1px solid" borderColor="cyan.700" bg="linear-gradient(145deg, rgba(10,28,56,0.78), rgba(7,17,34,0.9))">
-            <Heading size="md" mb={3}>Role-based access portals</Heading>
-            <VStack align="stretch" spacing={3}>
-              {portalCards.map((item) => (
-                <Box key={item.title} border="1px solid" borderColor="whiteAlpha.200" borderRadius="lg" p={4}>
-                  <Heading size="sm" mb={1}>{item.title}</Heading>
-                  <Text color="whiteAlpha.800" fontSize="sm" mb={3}>{item.text}</Text>
-                  <Button as={Link} href={item.href} size="sm" variant="outline" color="white" borderColor="whiteAlpha.500" _hover={{ bg: "whiteAlpha.200", color: "white" }}>Open Portal</Button>
-                </Box>
-              ))}
-            </VStack>
+            <Heading size="md" mb={3}>Role-based portal demos</Heading>
+            <VStack align="stretch" spacing={3}>{portalCards.map((item) => (<Box key={item.title} border="1px solid" borderColor="whiteAlpha.200" borderRadius="lg" p={4}><Heading size="sm" mb={1}>{item.title}</Heading><Text color="whiteAlpha.800" fontSize="sm" mb={3}>{item.text}</Text><Button as={Link} href={item.href} size="sm" variant="outline" color="white" borderColor="whiteAlpha.500" _hover={{ bg: "whiteAlpha.200", color: "white" }}>Open Demo Portal</Button></Box>))}</VStack>
           </Box>
         </Grid>
 
-        <Box mt={{ base: 12, md: 16 }}>
-          <Heading fontSize={{ base: "2xl", md: "3xl" }} mb={6}>CTO / CEO metrics preview</Heading>
-          <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={4}>
-            {executiveMetrics.map((metric) => (
-              <Box key={metric.label} p={5} borderRadius="xl" border="1px solid" borderColor="whiteAlpha.200" bg="rgba(9, 20, 34, 0.72)">
-                <Text fontSize="xs" letterSpacing="0.12em" color="whiteAlpha.700" textTransform="uppercase" mb={2}>{metric.label}</Text>
-                <Heading size="lg" color="cyan.200" mb={1}>{metric.value}</Heading>
-                <Text fontSize="sm" color="green.300">{metric.trend}</Text>
-              </Box>
-            ))}
-          </SimpleGrid>
-        </Box>
+        <Box mt={{ base: 12, md: 16 }}><Heading fontSize={{ base: "2xl", md: "3xl" }} mb={6}>CTO / CEO metrics preview</Heading><SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={4}>{executiveMetrics.map((metric) => (<Box key={metric.label} p={5} borderRadius="xl" border="1px solid" borderColor="whiteAlpha.200" bg="rgba(9, 20, 34, 0.72)"><Text fontSize="xs" letterSpacing="0.12em" color="whiteAlpha.700" textTransform="uppercase" mb={2}>{metric.label}</Text><Heading size="lg" color="cyan.200" mb={1}>{metric.value}</Heading><Text fontSize="sm" color="green.300">{metric.trend}</Text></Box>))}</SimpleGrid></Box>
 
-        <Box id="network" mt={{ base: 12, md: 16 }} scrollMarginTop="110px">
-          <Heading fontSize={{ base: "2xl", md: "3xl" }} mb={2}>Labit information network</Heading>
-          <Text color="whiteAlpha.800" mb={6}>Machines, communication channels, operations teams, and leadership views connected through one core.</Text>
-          <Box borderRadius="2xl" border="1px solid" borderColor="whiteAlpha.300" bg="radial-gradient(circle at center, rgba(34,211,238,0.14), rgba(7,18,30,0.88) 55%)" p={{ base: 5, md: 8 }}>
-            <Grid templateColumns={{ base: "1fr", lg: "1fr auto 1fr" }} gap={6} alignItems="center">
-              <VStack spacing={3} align="stretch">{leftNodes.map((node) => (<Box key={node} p={3} borderRadius="lg" border="1px solid" borderColor="whiteAlpha.300" bg="whiteAlpha.100"><Text fontSize="sm">{node}</Text></Box>))}</VStack>
-              <VStack spacing={4} minW={{ lg: "280px" }}>
-                <Image src={LABBIT_LOGO} alt="Labit Network Core" h={{ base: "56px", md: "74px" }} w="auto" />
-                <Box p={4} borderRadius="xl" border="1px solid" borderColor="cyan.300" bg="rgba(12,27,46,0.95)"><Text fontWeight="bold" color="cyan.200">Unified Labit Data Core</Text></Box>
-                <HStack spacing={2} color="cyan.200" fontSize="xs" letterSpacing="0.08em" textTransform="uppercase"><Text>Ingest</Text><Text>•</Text><Text>Process</Text><Text>•</Text><Text>Dispatch</Text></HStack>
-              </VStack>
-              <VStack spacing={3} align="stretch">{rightNodes.map((node) => (<Box key={node} p={3} borderRadius="lg" border="1px solid" borderColor="whiteAlpha.300" bg="whiteAlpha.100"><Text fontSize="sm">{node}</Text></Box>))}</VStack>
-            </Grid>
-          </Box>
-        </Box>
+        <Box id="network" mt={{ base: 12, md: 16 }} scrollMarginTop="110px"><Heading fontSize={{ base: "2xl", md: "3xl" }} mb={2}>Labit information network</Heading><Text color="whiteAlpha.800" mb={6}>Machines, communication channels, operations teams, and leadership views connected through one core.</Text><Box borderRadius="2xl" border="1px solid" borderColor="whiteAlpha.300" bg="radial-gradient(circle at center, rgba(34,211,238,0.14), rgba(7,18,30,0.88) 55%)" p={{ base: 5, md: 8 }}><Grid templateColumns={{ base: "1fr", lg: "1fr auto 1fr" }} gap={6} alignItems="center"><VStack spacing={3} align="stretch">{leftNodes.map((node) => (<Box key={node} p={3} borderRadius="lg" border="1px solid" borderColor="whiteAlpha.300" bg="whiteAlpha.100"><Text fontSize="sm">{node}</Text></Box>))}</VStack><VStack spacing={4} minW={{ lg: "280px" }}><Image src={LABBIT_LOGO} alt="Labit Network Core" h={{ base: "56px", md: "74px" }} w="auto" /><Box p={4} borderRadius="xl" border="1px solid" borderColor="cyan.300" bg="rgba(12,27,46,0.95)"><Text fontWeight="bold" color="cyan.200">Unified Labit Data Core</Text></Box><HStack spacing={2} color="cyan.200" fontSize="xs" letterSpacing="0.08em" textTransform="uppercase"><Text>Ingest</Text><Text>•</Text><Text>Process</Text><Text>•</Text><Text>Dispatch</Text></HStack></VStack><VStack spacing={3} align="stretch">{rightNodes.map((node) => (<Box key={node} p={3} borderRadius="lg" border="1px solid" borderColor="whiteAlpha.300" bg="whiteAlpha.100"><Text fontSize="sm">{node}</Text></Box>))}</VStack></Grid></Box></Box>
 
-        <Box id="contact" mt={{ base: 8, md: 10 }} scrollMarginTop="110px" p={{ base: 5, md: 6 }} borderRadius="2xl" border="1px solid" borderColor="whiteAlpha.300" bg="rgba(8, 19, 36, 0.75)">
-          <Heading size="md" mb={2}>Contact and rollout</Heading>
-          <Text color="whiteAlpha.800" mb={4}>For onboarding, pilot deployment, or enterprise rollout discussions, contact the Labit team.</Text>
-          <HStack spacing={3} flexWrap="wrap">
-            <Button as={Link} href="mailto:hello@labit.online" bg="teal.300" color="black" _hover={{ bg: "teal.200" }}>hello@labit.online</Button>
-            <Button as={Link} href="https://labit.online" isExternal variant="outline" color="white" borderColor="whiteAlpha.600" _hover={{ bg: "whiteAlpha.200", color: "white" }}>Visit labit.online</Button>
-          </HStack>
-        </Box>
+        <Box id="contact" mt={{ base: 8, md: 10 }} scrollMarginTop="110px" p={{ base: 5, md: 6 }} borderRadius="2xl" border="1px solid" borderColor="whiteAlpha.300" bg="rgba(8, 19, 36, 0.75)"><Heading size="md" mb={2}>Contact and rollout</Heading><Text color="whiteAlpha.800" mb={4}>For onboarding, pilot deployment, or enterprise rollout discussions, contact the Labit team.</Text><HStack spacing={3} flexWrap="wrap"><Button as={Link} href="mailto:hello@labit.online" bg="teal.300" color="black" _hover={{ bg: "teal.200" }}>hello@labit.online</Button><Button as={Link} href="https://labit.online" isExternal variant="outline" color="white" borderColor="whiteAlpha.600" _hover={{ bg: "whiteAlpha.200", color: "white" }}>Visit labit.online</Button></HStack></Box>
       </Container>
 
       <Box as="style" dangerouslySetInnerHTML={{ __html: `html { scroll-behavior: smooth; }` }} />
